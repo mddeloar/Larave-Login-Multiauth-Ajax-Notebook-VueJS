@@ -1,0 +1,31 @@
+CREATE TABLE student(
+    roll varchar(6),
+    name varchar(40),
+    department varchar(40),
+    session varchar(9),
+    PRIMARY KEY(roll)
+    );
+    
+CREATE TABLE class_test(
+    ID int not null AUTO_INCREMENT,
+    roll varchar(6),
+    number int,
+    mark float,
+    type int,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(roll) REFERENCES student(roll)
+    );
+    
+CREATE TABLE attendence(
+    ID int not null AUTO_INCREMENT,
+    roll varchar(6),
+    a_mark float,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(roll) REFERENCES student(roll)
+    );
+
+
+Update:
+
+
+    

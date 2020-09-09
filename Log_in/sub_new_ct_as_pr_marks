@@ -1,0 +1,47 @@
+<?php
+include("DB_connect.php");
+$type=0;/********************************* TYPE***********************************/
+if($type==0)
+{
+	echo "Class Test: ";
+}
+elseif ($type==1) {
+	echo "Assignment: ";
+}
+else
+{
+	echo "Presentation: ";
+}
+/*$sql = "SELECT max(number) as number
+		FROM class_test
+		WHERE type=$type";*//********************************* TYPE***********************************/
+
+$sql = "SELECT max(number)+1 as number FROM class_test JOIN student ON class_test.roll= student.roll WHERE type=$type AND student.department="$department" AND student.session="$session" ";
+$res = mysqli_query($conn,$sql);
+$rows=mysqli_fetch_assoc($res);
+echo $rows['number'];
+echo "<br>";
+$query = "SELECT roll
+		FROM student
+		where department='CSE' AND session='2014-15'";/******** Department & Session***************/
+$res = mysqli_query($conn,$query);
+if(mysqli_num_rows($res)>0)
+{
+	while ($rows=mysqli_fetch_assoc($res)) {
+		echo "Roll:";
+		echo $rows['roll'];
+		?>
+		<form action="" method="post">
+
+		Mark:<input type="text" name="mark" placeholder="mark"><br>
+
+		</form>
+
+		<?php
+		//echo "<br>";
+	}
+}
+
+
+?>
+
